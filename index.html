@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeremy Medina | Expert Web Developer Portfolio</title>
     <style>
+        /* Core System Core Variable Themes */
         :root {
             --bg-primary: #f9fafb;
             --bg-surface: #ffffff;
@@ -15,6 +16,7 @@
             --border: #e5e7eb;
             --shadow: rgba(0, 0, 0, 0.05);
         }
+
         [data-theme="dark"] {
             --bg-primary: #0f172a;
             --bg-surface: #1e293b;
@@ -25,58 +27,90 @@
             --border: #334155;
             --shadow: rgba(0, 0, 0, 0.3);
         }
+
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; scroll-behavior: smooth; }
         body { background-color: var(--bg-primary); color: var(--text-main); transition: background-color 0.3s, color 0.3s; min-height: 100vh; position: relative; }
+
+        /* Structure Elements Header Design Grid */
         header { background: var(--bg-surface); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 3px var(--shadow); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); }
         .logo-group { display: flex; flex-direction: column; }
-        .logo-main { font-weight: 800; font-size: 1.4rem; color: var(--primary); }
+        .logo-main { font-weight: 800; font-size: 1.4rem; color: var(--primary); letter-spacing: -0.5px; }
         .logo-sub { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); font-weight: 600; }
+        
         .nav-controls { display: flex; align-items: center; gap: 1.5rem; }
-        nav a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 0.95rem; margin-right: 1rem; }
-        .theme-toggle-btn { background: var(--bg-primary); border: 1px solid var(--border); color: var(--text-main); padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; font-size: 0.85rem; font-weight: 600; }
-        main { position: relative; z-index: 10; }
+        nav a { text-decoration: none; color: var(--text-muted); font-weight: 500; transition: color 0.2s; font-size: 0.95rem; margin-right: 1rem; }
+        nav a:hover { color: var(--primary); }
+
+        .theme-toggle-btn { background: var(--bg-primary); border: 1px solid var(--border); color: var(--text-main); padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: all 0.2s; display: flex; align-items: center; gap: 0.5rem; }
+        .theme-toggle-btn:hover { border-color: var(--primary); }
+
+        main { position: relative; z-index: 2; }
+
+        /* Hero Configuration Layout Display Box */
         .hero { padding: 6rem 5% 4rem; text-align: center; max-width: 900px; margin: 0 auto; }
         .badge { background: var(--border); color: var(--text-main); padding: 0.35rem 1rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin-bottom: 1.5rem; }
         .hero h1 { font-size: 3rem; font-weight: 800; line-height: 1.15; margin-bottom: 1.5rem; letter-spacing: -1px; }
-        .hero h1 span { color: var(--primary); }
+        .hero h1 span { color: var(--primary); position: relative; }
         .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 2.5rem; }
+        
         .cta-buttons { display: flex; gap: 1rem; justify-content: center; align-items: center; }
-        .btn { display: inline-flex; align-items: center; justify-content: center; background: var(--primary); color: white; padding: 0.8rem 1.8rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; transition: background 0.2s; border: none; cursor: pointer; font-size: 1rem; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; background: var(--primary); color: white; padding: 0.8rem 1.8rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; transition: background 0.2s, transform 0.1s; border: none; cursor: pointer; font-size: 1rem; }
         .btn:hover { background: var(--primary-hover); }
+        .btn:active { transform: scale(0.98); }
         .btn-secondary { background: transparent; border: 1px solid var(--border); color: var(--text-main); }
         .btn-secondary:hover { background: var(--border); }
+
+        /* Showcase Grid and Structural Cards Layout */
         .showcase-section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--border); }
         .section-header { text-align: center; margin-bottom: 3rem; }
         .section-header h2 { font-size: 2.2rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem; }
         .section-header p { color: var(--text-muted); font-size: 1.05rem; }
+
         .filter-container { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
         .filter-btn { background: var(--bg-surface); border: 1px solid var(--border); color: var(--text-muted); padding: 0.5rem 1.2rem; border-radius: 8px; cursor: pointer; font-weight: 500; font-size: 0.9rem; transition: all 0.2s; }
         .filter-btn.active, .filter-btn:hover { background: var(--primary); border-color: var(--primary); color: #ffffff; }
+
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
-        .card { background: var(--bg-surface); padding: 2.2rem; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px var(--shadow); border: 1px solid var(--border); display: flex; flex-direction: column; position: relative; overflow: hidden; }
-        .card::before { content: "JM VERIFIED"; position: absolute; right: -20px; top: 15px; background: var(--primary); color: #fff; font-size: 0.6rem; font-weight: 700; padding: 0.25rem 1.5rem; transform: rotate(45deg); }
-        .card-icon { font-size: 1.75rem; margin-bottom: 1.25rem; background: var(--bg-primary); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 10px; border: 1px solid var(--border); }
+        .card { background: var(--bg-surface); padding: 2.2rem; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px var(--shadow); border: 1px solid var(--border); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px var(--shadow); }
+        
+        .card::before { content: "JM VERIFIED"; position: absolute; right: -20px; top: 15px; background: var(--primary); color: #fff; font-size: 0.6rem; font-weight: 700; padding: 0.25rem 1.5rem; transform: rotate(45deg); opacity: 0.85; }
+        .card-icon { font-size: 1.75rem; margin-bottom: 1.25rem; display: inline-block; background: var(--bg-primary); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 10px; border: 1px solid var(--border); }
         .card h3 { font-size: 1.3rem; margin-bottom: 0.75rem; font-weight: 700; }
         .card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; }
+        
         .interactive-box { background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 1rem; margin-bottom: 1rem; font-size: 0.85rem; }
         .counter-display { font-size: 1.5rem; font-weight: 700; text-align: center; color: var(--primary); margin: 0.5rem 0; }
-        .form-container { max-width: 550px; margin: 0 auto; background: var(--bg-surface); border: 1px solid var(--border); padding: 2.5rem; border-radius: 12px; }
+
+        /* Form Security Elements Parsing Style Layout */
+        .form-container { max-width: 550px; margin: 0 auto; background: var(--bg-surface); border: 1px solid var(--border); padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 6px -1px var(--shadow); }
         .form-group { margin-bottom: 1.25rem; text-align: left; }
         .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-main); }
-        .form-group input { width: 100%; padding: 0.75rem; border: 1px solid var(--border); background: var(--bg-primary); color: var(--text-main); border-radius: 6px; font-size: 0.95rem; }
-        .form-message { font-size: 0.8rem; margin-top: 0.35rem; display: none; font-weight: 500; color: #ef4444; }
-        footer { background: var(--bg-surface); color: var(--text-muted); text-align: center; padding: 3rem 5%; font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 5rem; }
+        .form-group input, .form-group textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border); background: var(--bg-primary); color: var(--text-main); border-radius: 6px; font-size: 0.95rem; transition: border-color 0.2s; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); }
+        .form-message { font-size: 0.8rem; margin-top: 0.35rem; display: none; font-weight: 500; }
+        .form-message.error { color: #ef4444; display: block; }
+        .form-message.success { color: #22c55e; display: block; text-align: center; font-size: 0.95rem; margin-top: 1rem; }
+
+        footer { background: var(--bg-surface); color: var(--text-muted); text-align: center; padding: 3rem 5%; font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 5rem; position: relative; z-index: 2; }
+        footer .bold-name { font-weight: 700; color: var(--text-main); }
+
         @media (max-width: 768px) {
             header { padding: 1rem; flex-direction: column; gap: 0.75rem; text-align: center; }
             .nav-controls { flex-direction: column; gap: 0.75rem; width: 100%; }
             nav { display: flex; gap: 1rem; justify-content: center; }
+            .hero { padding: 4rem 1rem 3rem; }
             .hero h1 { font-size: 2.1rem; }
+            .hero p { font-size: 1rem; }
+            .cta-buttons { flex-direction: column; width: 100%; }
+            .btn { width: 100%; }
             .form-container { padding: 1.5rem; }
         }
     </style>
 </head>
 
     <body>
+    <!-- Top App Navigation Architecture -->
     <header>
         <div class="logo-group">
             <span class="logo-main">Jeremy Medina</span>
@@ -84,64 +118,67 @@
         </div>
         <div class="nav-controls">
             <nav>
-                <a href="#features">Features</a>
+                <a href="#features">Functional Features</a>
                 <a href="#validation">Form Logic</a>
             </nav>
-            <button class="theme-toggle-btn" id="themeToggle">
+            <button class="theme-toggle-btn" id="themeToggle" title="Toggle UI Design Theme">
                 <span id="themeIcon">🌙</span> <span id="themeText">Dark Theme</span>
             </button>
         </div>
     </header>
 
     <main>
+        <!-- Hero Section Frame -->
         <section class="hero">
-            <div class="badge">🔥 Production Ready Concept</div>
-            <h1>Engineered for Speed & <span>Perfect Mobile Display</span></h1>
-            <p>I build lightweight architectures engineered to run natively across all desktop workstations, Android frames, and iOS Safari environments.</p>
+            <div class="badge">🔥 Production Ready Interactive Concept</div>
+            <h1>Engineered for Speed, Scalability & <span>Perfect Mobile Display</span></h1>
+            <p>I build lightweight architectures engineered to run natively across all desktop workstations, Android frames, and iOS Safari environments without processing drops.</p>
             <div class="cta-buttons">
                 <a href="#validation" class="btn">Test Contact Logic</a>
             </div>
         </section>
 
+        <!-- Dynamic Filter Modules Area -->
         <section id="features" class="showcase-section">
             <div class="section-header">
                 <h2>All-in-One Functional Showcase</h2>
-                <p>Click the filters below to test real-time client-side modules.</p>
+                <p>Click the filters below to test real-time client-side scripting and element control modules.</p>
             </div>
 
+            <!-- Dynamic Filter Controls -->
             <div class="filter-container">
                 <button class="filter-btn active" data-filter="all">Show All Frameworks</button>
                 <button class="filter-btn" data-filter="state">Interactive State</button>
                 <button class="filter-btn" data-filter="responsive">Responsive Scaling</button>
             </div>
 
-            <div class="grid">
-                <!-- Module 1: Counter -->
+            <div class="grid" id="projectGrid">
+                <!-- Module Block 1 -->
                 <div class="card" data-category="state">
                     <div class="card-icon">🎛️</div>
                     <h3>Client-Side State Tracking</h3>
-                    <p>Increments session values instantly using clean memory management.</p>
+                    <p>Increments session values instantly using clean memory management without relying on database loads.</p>
                     <div class="interactive-box">
                         <div class="counter-display" id="counterVal">0</div>
-                        <button class="btn" style="width:100%; padding:0.5rem;" id="countBtn">Execute JavaScript Count</button>
+                        <button class="btn id-click-btn" style="width:100%; padding:0.5rem;" id="countBtn">Execute JavaScript Count</button>
                     </div>
                 </div>
 
-                <!-- Module 2: Viewport Metrics -->
+                <!-- Module Block 2 -->
                 <div class="card" data-category="responsive">
                     <div class="card-icon">📱</div>
                     <h3>Cross-Platform Frame Adapter</h3>
-                    <p>Detects current device metrics immediately. This layout targets mobile viewports fluidly.</p>
+                    <p>Detects current device metrics immediately. This layout fluidly targets mobile viewports, responsive grids, and high-density screens automatically.</p>
                     <div class="interactive-box" style="text-align: center; font-weight: 600;" id="deviceInfoBox">
                         Analyzing Window Metrics...
                     </div>
                 </div>
 
-                <!-- Module 3: Async Load Simulation -->
+                <!-- Module Block 3 -->
                 <div class="card" data-category="state">
                     <div class="card-icon">⚡</div>
                     <h3>Dynamic Data Display</h3>
-                    <p>Simulates asynchronous background API loads inside document components without freezing UI threads.</p>
+                    <p>Simulates asynchronous background API loads. Displays content immediately inside document components without freezing UI threads.</p>
                     <div class="interactive-box" style="text-align: center;">
                         <button class="btn btn-secondary" style="padding:0.4rem 1rem; font-size:0.8rem;" id="apiSimBtn">Trigger Async Load</button>
                         <p id="apiTargetText" style="margin-top:0.5rem; font-size:0.8rem; font-style:italic; display:none;"></p>
@@ -150,32 +187,36 @@
             </div>
         </section>
 
+        <!-- Form Security Validation Area -->
         <section id="validation" class="showcase-section" style="text-align: center;">
             <div class="section-header">
                 <h2>Interactive Form Logic Framework</h2>
-                <p>Tests immediate layout feedback and structure validation.</p>
+                <p>Tests immediate layout feedback, clean error parsing, and strict structure validation.</p>
             </div>
+
             <div class="form-container">
                 <form id="showcaseForm" novalidate>
                     <div class="form-group">
-                        <label>Your Business Name</label>
+                        <label for="clientName">Your Business Name</label>
                         <input type="text" id="clientName" placeholder="e.g., Small Business Enterprise">
-                        <div class="form-message" id="nameError">Business name is required.</div>
+                        <div class="form-message" id="nameError" style="color: #ef4444; font-size: 0.8rem; margin-top: 0.35rem; font-weight: 500; display: none;">Business tracking entity name is required.</div>
                     </div>
                     <button type="submit" class="btn" style="width: 100%;">Process Data Package</button>
-                    <div class="form-message" id="formSuccess" style="color: #22c55e; margin-top: 1rem;"></div>
+                    <div class="form-message" id="formSuccess" style="color: #22c55e; text-align: center; font-size: 0.95rem; margin-top: 1rem; font-weight: 500; display: none;"></div>
                 </form>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>System Architecture designed by <span style="font-weight:700;">Jeremy Medina</span>.</p>
+        <p>System Architecture designed and hand-coded by <span class="bold-name">Jeremy Medina</span>.</p>
+        <p style="font-size: 0.75rem; margin-top: 0.5rem; opacity: 0.7;">Production Layout Core &copy; 2026. Self-Healing Framework Enabled.</p>
     </footer>
 
-        <!-- Selyadong Script Core Framework Engine -->
+        <!-- Interactive Logical Scripts (JavaScript Modules) -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // 1. Theme Configuration Module
             const themeToggle = document.getElementById('themeToggle');
             const themeIcon = document.getElementById('themeIcon');
             const themeText = document.getElementById('themeText');
@@ -185,16 +226,17 @@
                     const currentTheme = document.documentElement.getAttribute('data-theme');
                     if (currentTheme === 'dark') {
                         document.documentElement.removeAttribute('data-theme');
-                        themeIcon.textContent = '🌙';
-                        themeText.textContent = 'Dark Theme';
+                        if (themeIcon) themeIcon.textContent = '🌙';
+                        if (themeText) themeText.textContent = 'Dark Theme';
                     } else {
                         document.documentElement.setAttribute('data-theme', 'dark');
-                        themeIcon.textContent = '☀️';
-                        themeText.textContent = 'Light Theme';
+                        if (themeIcon) themeIcon.textContent = '☀️';
+                        if (themeText) themeText.textContent = 'Light Theme';
                     }
                 });
             }
 
+            // 2. Client-Side Counter Module
             let count = 0;
             const countBtn = document.getElementById('countBtn');
             const counterVal = document.getElementById('counterVal');
@@ -205,13 +247,17 @@
                 });
             }
 
+            // 3. Dynamic Filtering Controls Module
             const filterButtons = document.querySelectorAll('.filter-btn');
             const cards = document.querySelectorAll('.card');
+
             filterButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
+                    
                     const filterValue = button.getAttribute('data-filter');
+                    
                     cards.forEach(card => {
                         if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
                             card.style.display = 'flex';
@@ -222,32 +268,38 @@
                 });
             });
 
+            // 4. Viewport Tracking Optimization Module
             const deviceInfoBox = document.getElementById('deviceInfoBox');
             function updateMetrics() {
                 if (!deviceInfoBox) return;
                 const w = window.innerWidth;
                 const h = window.innerHeight;
                 let type = "Desktop Frame";
-                if(w <= 480) type = "Mobile Phone Browser";
-                else if(w <= 768) type = "Tablet Grid";
-                deviceInfoBox.innerHTML = Active Viewport: <span style="color:#2563eb;">${w}px × ${h}px</span><br><small style="color:var(--text-muted); font-weight:500;">Frame: ${type}</small>;
+                if(w <= 480) type = "Mobile Phone Browser (iOS/Android)";
+                else if(w <= 768) type = "Tablet Device Grid";
+                
+                deviceInfoBox.innerHTML = Active Viewport: <span style="color:var(--primary);">${w}px × ${h}px</span><br><small style="color:var(--text-muted); font-weight:500;">Detected Frame: ${type}</small>;
             }
             window.addEventListener('resize', updateMetrics);
             updateMetrics();
 
+            // 5. Async Fetch Processing Module Simulation
             const apiSimBtn = document.getElementById('apiSimBtn');
             const apiTargetText = document.getElementById('apiTargetText');
             if (apiSimBtn && apiTargetText) {
                 apiSimBtn.addEventListener('click', () => {
                     apiTargetText.style.display = 'block';
                     apiTargetText.textContent = "Connecting to Data Stream...";
+                    apiTargetText.style.color = "var(--text-muted)";
+                    
                     setTimeout(() => {
-                        apiTargetText.textContent = "Data Package loaded successfully! [200 OK]";
+                        apiTargetText.textContent = "Data Package loaded successfully! [Status: 200 OK]";
                         apiTargetText.style.color = "#22c55e";
                     }, 1200);
                 });
             }
 
+            // 6. Form Parsing and Validation Module
             const form = document.getElementById('showcaseForm');
             if (form) {
                 form.addEventListener('submit', (e) => {
@@ -261,7 +313,7 @@
                     } else {
                         if (nameError) nameError.style.display = 'none';
                         if (successBox) {
-                            successBox.textContent = "Excellent! Layout Framework Validation Passed.";
+                            successBox.textContent = Excellent! Secure Form verified under engineer Jeremy Medina.;
                             successBox.style.display = 'block';
                         }
                         form.reset();
