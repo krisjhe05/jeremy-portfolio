@@ -7,19 +7,128 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- Anti-Theft Protection: Background Diagonal Watermarks -->
+    <div class="watermark-bg">
+        <div class="watermark-item">Jeremy Medina</div><div class="watermark-item">Jeremy Medina</div><div class="watermark-item">Jeremy Medina</div>
+        <div class="watermark-item">Jeremy Medina</div><div class="watermark-item">Jeremy Medina</div><div class="watermark-item">Jeremy Medina</div>
+        <div class="watermark-item">Jeremy Medina</div><div class="watermark-item">Jeremy Medina</div><div class="watermark-item">Jeremy Medina</div>
+        <div class="watermark-item">Jeremy Medina</div><div class="watermark-item">Jeremy Medina</div><div class="watermark-item">Jeremy Medina</div>
+    </div>
+
+    <!-- Top App Navigation Architecture -->
     <header>
-        <h1>Jeremy Medina Portfolio</h1>
-        <p>Engineered for Speed and Scalability.</p>
+        <div class="logo-group">
+            <span class="logo-main">Jeremy Medina</span>
+            <span class="logo-sub">Technical Solution Showcase</span>
+        </div>
+        <div class="nav-controls">
+            <nav>
+                <a href="#features">Functional Features</a>
+                <a href="#validation">Form Logic</a>
+            </nav>
+            <button class="theme-toggle-btn" id="themeToggle" title="Toggle UI Design Theme">
+                <span id="themeIcon">🌙</span> <span id="themeText">Dark Theme</span>
+            </button>
+        </div>
     </header>
+
     <main>
-        <section>
-            <h2>Welcome</h2>
-            <p>Please update your index.html with your complete HTML structure, CSS links, and JavaScript files.</p>
+        <!-- Hero Section Frame -->
+        <section class="hero">
+            <div class="badge">🔥 Production Ready Interactive Concept</div>
+            <h1>Engineered for Speed, Scalability & <span>Perfect Mobile Display</span></h1>
+            <p>I build lightweight architectures engineered to run natively across all desktop workstations, Android frames, and iOS Safari environments without processing drops.</p>
+            <div class="cta-buttons">
+                <a href="#validation" class="btn">Test Contact Logic</a>
+            </div>
+        </section>
+        <!-- Dynamic Filter Modules Area -->
+        <section id="features" class="showcase-section">
+            <div class="section-header">
+                <h2>All-in-One Functional Showcase</h2>
+                <p>Click the filters below to test real-time client-side scripting and element control modules.</p>
+            </div>
+
+            <!-- Dynamic Filter Controls -->
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">Show All Frameworks</button>
+                <button class="filter-btn" data-filter="state">Interactive State</button>
+                <button class="filter-btn" data-filter="responsive">Responsive Scaling</button>
+            </div>
+
+            <div class="grid" id="projectGrid">
+                <!-- Module Block 1 -->
+                <div class="card" data-category="state">
+                    <div class="card-icon">🎛️</div>
+                    <h3>Client-Side State Tracking</h3>
+                    <p>Increments session values instantly using clean memory management without relying on database loads.</p>
+                    <div class="interactive-box">
+                        <div class="counter-display" id="counterVal">0</div>
+                        <button class="btn id-click-btn" style="width:100%; padding:0.5rem;" id="countBtn">Execute JavaScript Count</button>
+                    </div>
+                </div>
+
+                <!-- Module Block 2 -->
+                <div class="card" data-category="responsive">
+                    <div class="card-icon">📱</div>
+                    <h3>Cross-Platform Frame Adapter</h3>
+                    <p>Detects current device metrics immediately. This layout fluidly targets mobile viewports, responsive grids, and high-density screens automatically.</p>
+                    <div class="interactive-box" style="text-align: center; font-weight: 600;" id="deviceInfoBox">
+                        Analyzing Window Metrics...
+                    </div>
+                </div>
+
+                <!-- Module Block 3 -->
+                <div class="card" data-category="state">
+                    <div class="card-icon">⚡</div>
+                    <h3>Dynamic Data Display</h3>
+                    <p>Simulates asynchronous background API loads. Displays content immediately inside document components without freezing UI threads.</p>
+                    <div class="interactive-box" style="text-align: center;">
+                        <button class="btn btn-secondary" style="padding:0.4rem 1rem; font-size:0.8rem;" id="apiSimBtn">Trigger Async Load</button>
+                        <p id="apiTargetText" style="margin-top:0.5rem; font-size:0.8rem; font-style:italic; display:none;"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Form Security Validation Area -->
+        <section id="validation" class="showcase-section" style="text-align: center;">
+            <div class="section-header">
+                <h2>Interactive Form Logic Framework</h2>
+                <p>Tests immediate layout feedback, clean error parsing, and strict structure validation.</p>
+            </div>
+
+            <div class="form-container">
+                <form id="showcaseForm" novalidate>
+                    <div class="form-group">
+                        <label for="clientName">Your Business Name</label>
+                        <input type="text" id="clientName" placeholder="e.g., Small Business Enterprise">
+                        <div class="form-message" id="nameError" style="display: none; color: #ef4444; font-size: 0.8rem; margin-top: 0.35rem; font-weight: 500;">Business tracking entity name is required.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="clientEmail">Email Coordinates</label>
+                        <input type="email" id="clientEmail" placeholder="client@company.com">
+                        <div class="form-message" id="emailError" style="display: none; color: #ef4444; font-size: 0.8rem; margin-top: 0.35rem; font-weight: 500;">Please input a structurally accurate email layout.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="clientMessage">Core Project Description</label>
+                        <textarea id="clientMessage" rows="4" placeholder="Briefly detail required core updates..."></textarea>
+                        <div class="form-message" id="messageError" style="display: none; color: #ef4444; font-size: 0.8rem; margin-top: 0.35rem; font-weight: 500;">Please provide descriptive project parameters.</div>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Process Data Package</button>
+                    <div class="form-message" id="formSuccess" style="display: none; color: #22c55e; text-align: center; font-size: 0.95rem; margin-top: 1rem; font-weight: 500;"></div>
+                </form>
+            </div>
         </section>
     </main>
+
+    <!-- Structural Footer -->
     <footer>
-        <p>&copy; 2026 Jeremy Medina</p>
+        <p>System Architecture designed and hand-coded by <span class="bold-name">Jeremy Medina</span>.</p>
+        <p style="font-size: 0.75rem; margin-top: 0.5rem; opacity: 0.7;">Production Layout Core &copy; 2026. Self-Healing Framework Enabled.</p>
     </footer>
+
+    <!-- Dito natin tinatawag ang hiwalay na script.js para gumana ang JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
