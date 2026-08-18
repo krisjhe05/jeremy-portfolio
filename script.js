@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 4. Viewport Adapter Tracking
+    // 4. Viewport Adapter Tracking Update
     const deviceInfoBox = document.getElementById('deviceInfoBox');
     function updateMetrics() {
         if (!deviceInfoBox) return;
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', updateMetrics);
     updateMetrics();
 
-    // 5. Async API Sim
+    // 5. Async API Simulation
     const apiSimBtn = document.getElementById('apiSimBtn');
     const apiTargetText = document.getElementById('apiTargetText');
     if (apiSimBtn && apiTargetText) {
